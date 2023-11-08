@@ -7,6 +7,16 @@ public class Car {
     public Color color; // Color of the car
     public String modelName; // The car model name
 
+    public boolean turboOn;
+
+    public void setTurboOn(){
+        turboOn = true;
+    }
+
+    public void setTurboOff(){
+        turboOn = false;
+    }
+
     public int getNrDoors(){
         return nrDoors;
     }
