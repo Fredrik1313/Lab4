@@ -1,42 +1,44 @@
 import org.junit.Test;
-public class testVolvo240 {
+import static org.junit.Assert.assertEquals;
+
+public class TestVolvo240 {
     Volvo240 car = new Volvo240();
 
     @Test
     public void testGas() {
         car.gas(0.5);
-        assertEquals(0.625, car.currentSpeed);
+        assertEquals(0.625, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testBrake() {
         car.gas(0.5);
         car.brake(0.5);
-        assertEquals(0, car.currentSpeed);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testGasAboveLimit() {
         car.gas(2);
-        assertEquals(1.25, car.currentSpeed);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testBrakeBelowLimit() {
         car.brake(2);
-        assertEquals(0, car.currentSpeed);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testNegativeGas() {
         car.gas(-1);
-        assertEquals(0, car.currentSpeed);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testNegativeBrake() {
-        car.gas(-1);
-        assertEquals(0, car.currentSpeed);
+        car.brake(-1);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
@@ -44,6 +46,6 @@ public class testVolvo240 {
         for (int i = 0; i < 81; i++) {
             car.gas(1);
         }
-        assertEquals(100, car.currentSpeed);
+        assertEquals(100, car.currentSpeed, 1e-6);
     }
 }

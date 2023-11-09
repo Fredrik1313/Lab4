@@ -7,9 +7,8 @@ abstract class Car implements Movable{
     protected double currentSpeed; // The current speed of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
-    public boolean turboOn; // If turbo is on or off
-    abstract double speedFactor(); //
-
+    protected boolean turboOn; // If turbo is on or off
+    abstract double speedFactor();
     protected double x = 0.0;
     protected double y = 0.0;
     protected double direction = 0.0;
@@ -63,8 +62,8 @@ abstract class Car implements Movable{
     public void  move(double duration){
         double distance = currentSpeed*Math.max(duration, 0);
         double radianDirection = Math.toRadians(direction);
-        x += Math.sin(radianDirection) * distance;
-        y += Math.cos(radianDirection) * distance;
+        x += Math.cos(radianDirection) * distance;
+        y += Math.sin(radianDirection) * distance;
     }
     public void turnLeft(double angleDeg){
         direction += angleDeg;

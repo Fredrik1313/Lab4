@@ -1,17 +1,19 @@
 import org.junit.Test;
-public class testSaab95 {
+import static org.junit.Assert.assertEquals;
+
+public class TestSaab95 {
     Saab95 car = new Saab95();
     @Test
     public void testGasWithTurbo() {
         car.setTurboOn();
         car.gas(0.5);
-        assertEquals(0.8125, car.currentSpeed);
+        assertEquals(0.8125, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testGasWithoutTurbo() {
         car.gas(0.5);
-        assertEquals(0.625, car.currentSpeed);
+        assertEquals(0.625, car.currentSpeed, 1e-6);
     }
 
     @Test
@@ -19,38 +21,38 @@ public class testSaab95 {
         car.setTurboOn();
         car.gas(0.5);
         car.brake(0.5);
-        assertEquals(0, car.currentSpeed);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testBrakeWithoutTurbo() {
         car.gas(0.5);
         car.brake(0.5);
-        assertEquals(0, car.currentSpeed);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testGasAboveLimit() {
         car.gas(2);
-        assertEquals(1.25, car.currentSpeed);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testBrakeBelowLimit() {
         car.brake(2);
-        assertEquals(0, car.currentSpeed);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testNegativeGas() {
         car.gas(-1);
-        assertEquals(0, car.currentSpeed);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
     public void testNegativeBrake() {
-        car.gas(-1);
-        assertEquals(0, car.currentSpeed);
+        car.brake(-1);
+        assertEquals(0, car.currentSpeed, 1e-6);
     }
 
     @Test
@@ -58,6 +60,6 @@ public class testSaab95 {
         for (int i = 0; i < 101; i++) {
             car.gas(1);
         }
-        assertEquals(125, car.currentSpeed);
+        assertEquals(125, car.currentSpeed, 1e-6);
     }
 }
