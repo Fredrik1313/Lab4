@@ -1,6 +1,6 @@
 import java.awt.*;
 
-abstract class Car implements Movable{
+abstract class Car implements Movable {
     // Variables
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
