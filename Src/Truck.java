@@ -14,10 +14,10 @@ abstract class Truck extends MotorVehicle {
         }
     }
     public void lowerLoadingPlatform(double angle){
-        trailerAngle -= angle; // Can not be under 0
+        trailerAngle = limitTo(trailerAngle - angle, 0,70);
     }
     public void raiseLoadingPlatform(double angle){
-        trailerAngle += angle; // Can not be over 70
+        trailerAngle = limitTo(trailerAngle + angle, 0,70);
     }
     public double speedFactor(){
         if (trailerAngle == 0){
@@ -26,9 +26,5 @@ abstract class Truck extends MotorVehicle {
         else{
             return 0.0;
         }
-    }
-
-    public void loadingPlatform(){
-        limitTo(trailerAngle, 0,70);
     }
 }
