@@ -49,7 +49,7 @@ public class CarTransport extends Truck{
     @Override
     public double speedFactor(){
         if (!rampOpen){
-            return enginePower;
+            return super.speedFactor();
         }
         else {
             return 0.0;
