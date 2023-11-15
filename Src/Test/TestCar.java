@@ -18,34 +18,27 @@ public class TestCar {
 
     @Test
     public void testTurnLeft() {
-        car.turnLeft(45);
-        assertEquals(45, car.direction, 1e-6);
-        car.turnLeft(-45);
-        assertEquals(0, car.direction, 1e-6);
+        car.turnLeft();
+        assertEquals(5, car.direction, 1e-6);
+        car.turnLeft();
+        assertEquals(10, car.direction, 1e-6);
     }
 
     @Test
     public void testTurnRight() {
-        car.turnRight(45);
-        assertEquals(-45, car.direction, 1e-6);
-        car.turnRight(-45);
-        assertEquals(0, car.direction, 1e-6);
+        car.turnRight();
+        assertEquals(-5, car.direction, 1e-6);
+        car.turnRight();
+        assertEquals(-10, car.direction, 1e-6);
     }
 
     @Test
     public void testMove() {
         car.startEngine();
-        car.turnRight(45);
-        car.move(10);
-        assertEquals(0.70711, car.x, 1E-4);
-        assertEquals(-0.70711, car.y, 1E-4);
-    }
-
-    @Test
-    public void testMoveNegativeTime() {
-        car.startEngine();
-        car.move(-10);
-        assertEquals(0, car.x, 1e-6);
-        assertEquals(0, car.y, 1e-6);
+        car.turnRight();
+        car.gas(0.5);
+        car.move();
+        assertEquals(0.722241, car.x, 1E-4);
+        assertEquals(-0.063188, car.y, 1E-4);
     }
 }
