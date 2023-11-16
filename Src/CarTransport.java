@@ -9,7 +9,7 @@ public class CarTransport extends Truck{
     public CarTransport(){
         nrDoors = 2;
         color = Color.orange;
-        enginePower = 425;
+        enginePower = 90;
         modelName = "CarTransport";
         stopEngine();
     }

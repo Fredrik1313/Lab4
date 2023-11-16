@@ -1,12 +1,11 @@
 import java.awt.*;
+
 public class Scania extends Truck{
     public Scania(){
         nrDoors = 2;
-        color = Color.blue;
-        enginePower = 525;
+        color = Color.black;
+        enginePower = 90;
         modelName = "Scania";
-        moving = false;
         stopEngine();
     }
-
 }
