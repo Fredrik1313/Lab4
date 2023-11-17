@@ -5,6 +5,7 @@ public class CarTransport extends Truck{
     protected boolean rampOpen = false;
     private final Car[] carsLoaded = new Car[8];
     protected int nCarsLoaded = 0;
+    private double distanceThreshold = 10;
 
     public CarTransport(){
         nrDoors = 2;
@@ -16,7 +17,7 @@ public class CarTransport extends Truck{
 
     public void loadCar(Car vehicle){
         if (rampOpen && nCarsLoaded < carsLoaded.length &&
-                Math.abs(x-vehicle.x) < 10 && Math.abs(y-vehicle.y) < 10){
+                Math.abs(x-vehicle.x) < distanceThreshold && Math.abs(y-vehicle.y) < distanceThreshold){
             carsLoaded[nCarsLoaded] = vehicle;
             nCarsLoaded++;
         }
