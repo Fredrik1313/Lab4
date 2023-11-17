@@ -40,7 +40,7 @@ public class TestCarTransport {
     public void testUnloadCar(){
         Truck.openRamp();
         Truck.loadCar(saab);
-        Truck.unloadCar();
+        Truck.unloadCar(1);
         assertEquals(0, Truck.nCarsLoaded, 1e-6);
     }
 
@@ -51,5 +51,16 @@ public class TestCarTransport {
             Truck.loadCar(saab);
         }
         assertEquals(8, Truck.nCarsLoaded, 1e-6);
+    }
+
+    @Test
+    public void testUnloadCarPosition(){
+        Truck.openRamp();
+        Truck.loadCar(saab);
+        Truck.loadCar(volvo);
+        Truck.unloadCar(2);
+
+        assertNotEquals(saab.x, volvo.x);
+        assertEquals(saab.y, volvo.y, 1e-6);
     }
 }
