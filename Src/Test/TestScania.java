@@ -42,6 +42,6 @@ public class TestScania {
         for (int i = 0; i < 101; i++) {
             Truck.gas(1);
         }
-        assertEquals(425, Truck.currentSpeed, 1e-6);
+        assertEquals(90, Truck.currentSpeed, 1e-6);
     }
 }

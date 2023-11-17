@@ -2,9 +2,9 @@ import java.awt.*;
 
 public class CarTransport extends Truck{
 
-    private boolean rampOpen = false;
+    protected boolean rampOpen = false;
     private Car[] carsLoaded = new Car[8];
-    private int nCarsLoaded = 0;
+    protected int nCarsLoaded = 0;
 
     public CarTransport(){
         nrDoors = 2;
