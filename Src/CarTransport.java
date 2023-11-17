@@ -23,7 +23,7 @@ public class CarTransport extends Truck{
         }
     }
     public void unloadCar(int nCars){
-        if (rampOpen && nCarsLoaded > 0){
+        if (rampOpen && nCarsLoaded >= nCars){
             for (int i = 0; i < nCars; i++) {
                 nCarsLoaded--;
                 carsLoaded[nCarsLoaded - 1].y -= distanceThreshold;
