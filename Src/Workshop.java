@@ -13,6 +13,10 @@ public class Workshop {
         this.acceptedCars = acceptedCars;
     }
 
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
+    }
+    
     private boolean carTypeValid(Car car) {
         for (Class<? extends Car> validCar : acceptedCars) {
             if (validCar.isInstance(car)) {
