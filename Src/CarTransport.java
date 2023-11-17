@@ -3,7 +3,7 @@ import java.awt.*;
 public class CarTransport extends Truck{
 
     protected boolean rampOpen = false;
-    private Car[] carsLoaded = new Car[8];
+    private final Car[] carsLoaded = new Car[8];
     protected int nCarsLoaded = 0;
 
     public CarTransport(){
