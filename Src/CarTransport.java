@@ -22,10 +22,14 @@ public class CarTransport extends Truck{
             nCarsLoaded++;
         }
     }
-    public void unloadCar(){
+    public void unloadCar(int nCars){
         if (rampOpen && nCarsLoaded > 0){
-            nCarsLoaded--;
-            carsLoaded[nCarsLoaded] = null;
+            for (int i = 0; i < nCars; i++) {
+                nCarsLoaded--;
+                carsLoaded[nCarsLoaded - 1].y -= distanceThreshold;
+                carsLoaded[nCarsLoaded - 1].x += distanceThreshold * i;
+                carsLoaded[nCarsLoaded - 1] = null;
+            }
         }
     }
     public void openRamp(){
