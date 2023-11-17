@@ -26,9 +26,9 @@ public class CarTransport extends Truck{
         if (rampOpen && nCarsLoaded >= nCars){
             for (int i = 0; i < nCars; i++) {
                 nCarsLoaded--;
-                carsLoaded[nCarsLoaded - 1].y -= distanceThreshold;
-                carsLoaded[nCarsLoaded - 1].x += distanceThreshold * i;
-                carsLoaded[nCarsLoaded - 1] = null;
+                carsLoaded[nCarsLoaded].y -= distanceThreshold;
+                carsLoaded[nCarsLoaded].x += distanceThreshold * i;
+                carsLoaded[nCarsLoaded] = null;
             }
         }
     }
