@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.Stack;
 
-public class CarTransport extends Truck{
+public class CarTransport extends Truck {
 
     protected boolean rampOpen = false;
     private Stack<Car> carsLoaded = new Stack<>();
@@ -9,7 +9,7 @@ public class CarTransport extends Truck{
     private final double MAXDISTANCE = 10;
     private final double CARSPACING = 6.0;
 
-    public CarTransport(){
+    public CarTransport() {
         nrDoors = 2;
         color = Color.orange;
         enginePower = 90;
@@ -17,51 +17,56 @@ public class CarTransport extends Truck{
         stopEngine();
     }
 
-    public void loadCar(Car car){
+    public void loadCar(Car car) {
         if (rampOpen && (carsLoaded.size() < MAXLOAD) &&
-                (Math.abs(x-car.x) < MAXDISTANCE) && (Math.abs(y-car.y) < MAXDISTANCE)){
+                (Math.abs(x - car.x) < MAXDISTANCE) && (Math.abs(y - car.y) < MAXDISTANCE)) {
             carsLoaded.push(car);
         }
     }
-    public void unloadCars(int nCars){
-        if (rampOpen){
+
+    public void unloadCars(int nCars) {
+        if (rampOpen) {
             double radianDirection = Math.toRadians(direction);
             double dx = Math.cos(radianDirection) * CARSPACING;
             double dy = Math.sin(radianDirection) * CARSPACING;
-            for (int i = nCars;(i > 0) && !carsLoaded.empty(); i--) {
+            for (int i = nCars; (i > 0) && !carsLoaded.empty(); i--) {
                 Car car = carsLoaded.pop();
                 car.x -= dx * i;
                 car.y -= dy * i;
             }
         }
     }
-    public int getNumberCarsLoaded(){
+
+    public int getNumberCarsLoaded() {
         return carsLoaded.size();
     }
-    public void openRamp(){
-        if (currentSpeed == 0){
+
+    public void openRamp() {
+        if (currentSpeed == 0) {
             rampOpen = true;
         }
     }
-    public void closeRamp(){
-        if (currentSpeed == 0){
+
+    public void closeRamp() {
+        if (currentSpeed == 0) {
             rampOpen = false;
         }
     }
+
     @Override
-    public void move(){
+    public void move() {
         super.move();
-        for (Car car: carsLoaded) {
+        for (Car car : carsLoaded) {
             car.x = x;
             car.y = y;
         }
     }
+
     @Override
-    public double speedFactor(){
-        if (!rampOpen){
-            return super.speedFactor();
-        }
-        else {
+    public double speedFactor() {
+        if (!rampOpen) {
+            return 0.01 * enginePower;
+        } else {
             return 0.0;
         }
     }
