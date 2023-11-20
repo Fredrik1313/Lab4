@@ -1,10 +1,13 @@
 import java.awt.*;
+import java.util.Stack;
 
 public class CarTransport extends Truck{
 
-    private boolean rampOpen = false;
-    private Car[] carsLoaded = new Car[8];
-    private int nCarsLoaded = 0;
+    protected boolean rampOpen = false;
+    private Stack<Car> carsLoaded = new Stack<>();
+    protected final int MAXLOAD = 8;
+    private final double MAXDISTANCE = 10;
+    private final double CARSPACING = 6.0;
 
     public CarTransport(){
         nrDoors = 2;
@@ -14,18 +17,26 @@ public class CarTransport extends Truck{
         stopEngine();
     }
 
-    public void loadCar(Car vehicle){
-        if (rampOpen && nCarsLoaded < carsLoaded.length &&
-                Math.abs(x-vehicle.x) < 10 && Math.abs(y-vehicle.y) < 10){
-            carsLoaded[nCarsLoaded] = vehicle;
-            nCarsLoaded++;
+    public void loadCar(Car car){
+        if (rampOpen && (carsLoaded.size() < MAXLOAD) &&
+                (Math.abs(x-car.x) < MAXDISTANCE) && (Math.abs(y-car.y) < MAXDISTANCE)){
+            carsLoaded.push(car);
         }
     }
-    public void unloadCar(){
-        if (rampOpen && nCarsLoaded > 0){
-            nCarsLoaded--;
-            carsLoaded[nCarsLoaded] = null;
+    public void unloadCars(int nCars){
+        if (rampOpen){
+            double radianDirection = Math.toRadians(direction);
+            double dx = Math.cos(radianDirection) * CARSPACING;
+            double dy = Math.sin(radianDirection) * CARSPACING;
+            for (int i = nCars;(i > 0) && !carsLoaded.empty(); i--) {
+                Car car = carsLoaded.pop();
+                car.x -= dx * i;
+                car.y -= dy * i;
+            }
         }
+    }
+    public int getNumberCarsLoaded(){
+        return carsLoaded.size();
     }
     public void openRamp(){
         if (currentSpeed == 0){
@@ -40,10 +51,9 @@ public class CarTransport extends Truck{
     @Override
     public void move(){
         super.move();
-
-        for (int i = 0; i < nCarsLoaded; i++){
-            carsLoaded[i].x = x;
-            carsLoaded[i].y = y;
+        for (Car car: carsLoaded) {
+            car.x = x;
+            car.y = y;
         }
     }
     @Override

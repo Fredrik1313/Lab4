@@ -1,5 +1,5 @@
 import org.junit.Test;
-import static org.junit.Assertions.*;
+import static org.junit.Assert.*;
 
 public class TestWorkshop {
 
@@ -15,11 +15,11 @@ public class TestWorkshop {
 
     @Test
     public void testLoadCarInvalidType() {
-        Class<? extends Car>[] acceptedCars = new Class[]{Saab95.class, Volvo240.class};
+        Class<? extends Car>[] acceptedCars = new Class[]{Saab95.class};
         Workshop workshop = new Workshop(5, acceptedCars);
-        Scania truck = new Scania();
+        Volvo240 car = new Volvo240();
 
-        assertThrows(IllegalArgumentException.class, () -> workshop.loadCar(truck));
+        assertThrows(IllegalArgumentException.class, () -> workshop.loadCar(car));
     }
 
     @Test

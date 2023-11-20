@@ -10,7 +10,7 @@ abstract class MotorVehicle implements Movable {
     protected double x = 0.0; // The car's x-coordinate
     protected double y = 0.0; // The car's y-coordinate
     protected double direction = 0.0; // The car's driving direction
-    private final static double TURNANGLE = 90; // Angle step size
+    private final static double TURNANGLE = 90.0; // Angle step size
 
     // Methods
     public double getEnginePower() {
