@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 abstract class MotorVehicle implements Movable {
     // Variables
@@ -21,6 +22,9 @@ abstract class MotorVehicle implements Movable {
     }
     public Color getColor(){
         return color;
+    }
+    public Point2D getPosition(){
+        return new Point2D.Double(x,y);
     }
     public void setColor(Color clr){color = clr;}
     public void startEngine(){
