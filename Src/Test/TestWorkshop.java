@@ -4,28 +4,26 @@ import static org.junit.Assert.*;
 public class TestWorkshop {
 
     @Test
-    public void testLoadCarValidType() {
-        Class<? extends Car>[] acceptedCars = new Class[]{Saab95.class, Volvo240.class};
-        Workshop workshop = new Workshop(5, acceptedCars);
-        Saab95 car = new Saab95();
+    public void testLoadCar() {
+        Workshop workshop = new Workshop(5);
+        Saab95 Saab95 = new Saab95();
 
-        workshop.loadCar(car);
-        assertTrue(workshop.getCars().contains(car));
+        workshop.loadCar(Saab95);
+        assertTrue(workshop.getCars().contains(Saab95));
     }
 
     @Test
     public void testLoadCarInvalidType() {
-        Class<? extends Car>[] acceptedCars = new Class[]{Saab95.class};
-        Workshop workshop = new Workshop(5, acceptedCars);
-        Volvo240 car = new Volvo240();
-
-        assertThrows(IllegalArgumentException.class, () -> workshop.loadCar(car));
+        Volvo240 Volvo240 = new Volvo240();
+        Saab95 Saab95 = new Saab95();
+        Workshop<Volvo240> workshop = new Workshop<>(5);
+        workshop.loadCar(Volvo240);
+        workshop.loadCar(Saab95);
     }
 
     @Test
     public void testUnloadCarPresent() {
-        Class<? extends Car>[] acceptedCars = new Class[]{Saab95.class, Volvo240.class};
-        Workshop workshop = new Workshop(5, acceptedCars);
+        Workshop workshop = new Workshop(5);
         Saab95 car = new Saab95();
 
         workshop.loadCar(car);
@@ -36,8 +34,7 @@ public class TestWorkshop {
 
     @Test
     public void testUnloadCarNotPresent() {
-        Class<? extends Car>[] acceptedCars = new Class[]{Saab95.class, Volvo240.class};
-        Workshop workshop = new Workshop(5, acceptedCars);
+        Workshop workshop = new Workshop(5);
         Saab95 car = new Saab95();
 
         assertThrows(IllegalArgumentException.class, () -> workshop.unloadCar(car));

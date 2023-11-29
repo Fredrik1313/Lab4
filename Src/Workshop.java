@@ -1,45 +1,32 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Workshop {
+public class Workshop<C extends Car> {
 
-    private Class<? extends Car>[] acceptedCars;
-    private List<Car> cars;
+    private List<C> cars;
     private int carCapacity;
 
-    public Workshop(int carCapacity, Class<? extends Car>[] acceptedCars) {
+    public Workshop(int carCapacity) {
         this.cars = new ArrayList<>();
         this.carCapacity = carCapacity;
-        this.acceptedCars = acceptedCars;
     }
 
-    public List<Car> getCars() {
+    public List<C> getCars() {
         return new ArrayList<>(cars);
     }
 
-    private boolean carTypeValid(Car car) {
-        for (Class<? extends Car> validCar : acceptedCars) {
-            if (validCar.isInstance(car)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void loadCar(Car car) {
-        if (!carTypeValid(car)) {
-            throw new IllegalArgumentException("This type of car cannot be loaded into this workshop");
-        }
+    public void loadCar(C car) {
         if (cars.size() < carCapacity) {
             cars.add(car);
+        } else {
+            throw new IllegalStateException("Workshop is at full capacity, cannot load more cars");
         }
     }
 
-    public void unloadCar(Car car) {
+    public void unloadCar(C car) {
         if (cars.contains(car)) {
             cars.remove(car);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("This car is not present in the workshop");
         }
     }
