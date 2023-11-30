@@ -64,7 +64,7 @@ public class Model {
         for (AnimatedVehicle vehicle : vehicles){
             MotorVehicle realVehicle = vehicle.getVehicle();
             if (realVehicle instanceof Scania){
-                ((Scania)realVehicle).raiseLoadingPlatform(5);
+                ((Scania)realVehicle).raiseLoadingPlatform(10);
             }
         }
     }
@@ -74,7 +74,7 @@ public class Model {
         for (AnimatedVehicle vehicle : vehicles){
             MotorVehicle realVehicle = vehicle.getVehicle();
             if (realVehicle instanceof Scania){
-                ((Scania)realVehicle).lowerLoadingPlatform(5);
+                ((Scania)realVehicle).lowerLoadingPlatform(10);
             }
         }
     }

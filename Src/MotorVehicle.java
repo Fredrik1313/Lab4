@@ -8,8 +8,8 @@ abstract class MotorVehicle implements Movable {
     protected Color color; // Color of the car
     protected String modelName; // The car model name
     abstract double speedFactor(); //
-    protected double x = 0.0; // The car's x-coordinate
-    protected double y = 0.0; // The car's y-coordinate
+    protected double x; // The car's x-coordinate
+    protected double y; // The car's y-coordinate
     protected double direction = 0.0; // The car's driving direction
     private final static double TURNANGLE = 90.0; // Angle step size
 
@@ -36,6 +36,10 @@ abstract class MotorVehicle implements Movable {
     }
     protected void incrementSpeed(double amount) {
         currentSpeed = limitTo((currentSpeed + speedFactor() * amount),0.0, enginePower);
+    }
+    public MotorVehicle(){
+        this.x = x;
+        this.y = y;
     }
     protected void decrementSpeed(double amount) {
         currentSpeed = limitTo((currentSpeed - speedFactor() * amount),0.0, enginePower);

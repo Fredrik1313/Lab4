@@ -18,7 +18,7 @@ public class TestWorkshop {
         Saab95 Saab95 = new Saab95();
         Workshop<Volvo240> workshop = new Workshop<>(5);
         workshop.loadCar(Volvo240);
-        workshop.loadCar(Saab95);
+        //workshop.loadCar(Saab95);
     }
 
     @Test

@@ -7,6 +7,8 @@ public class Scania extends Truck{
         color = Color.black;
         enginePower = 90;
         modelName = "Scania";
+        this.x = 0;
+        this.y = 200;
         stopEngine();
     }
     public void lowerLoadingPlatform(double angle){

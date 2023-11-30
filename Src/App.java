@@ -1,8 +1,3 @@
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.Point2D;
-
 // Bootstrap of the project, contains the main method
 public class App {
     // Declare the three parts of the MVC paradign
