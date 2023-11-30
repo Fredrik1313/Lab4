@@ -1,12 +1,12 @@
+import java.awt.geom.Point2D;
+
 abstract class Truck extends MotorVehicle {
-
-    public Truck(){
-        this.x = x;
-        this.y = y;
-    }
-
     // Variables
     protected int nrDoors; // Number of doors on the car
+
+    public Truck(Point2D.Double position){
+        super(position);
+    }
 
     // Methods
     public int getNrDoors(){

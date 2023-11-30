@@ -1,11 +1,14 @@
 import org.junit.Test;
+
+import java.awt.geom.Point2D;
+
 import static org.junit.Assert.*;
 
 
 public class TestCarTransport {
-    CarTransport Truck = new CarTransport();
-    Saab95 saab = new Saab95();
-    Volvo240 volvo = new Volvo240();
+    CarTransport Truck = new CarTransport(new Point2D.Double(0,  0));
+    Saab95 saab = new Saab95(new Point2D.Double(0,  0));
+    Volvo240 volvo = new Volvo240(new Point2D.Double(0,  0));
 
     @Test
     public void testGasWithOpenRamp(){

@@ -1,8 +1,11 @@
 import org.junit.Test;
+
+import java.awt.geom.Point2D;
+
 import static org.junit.Assert.assertEquals;
 
 public class TestVolvo240 {
-    Volvo240 car = new Volvo240();
+    Volvo240 car = new Volvo240(new Point2D.Double(0,  0));
 
     @Test
     public void testGas() {

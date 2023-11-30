@@ -19,7 +19,7 @@ public class DrawPanel extends JPanel{
         super.paintComponent(g);
         if (model != null) {
             for (AnimatedVehicle vehicle : model.getVehicles()) {
-                vehicle.draw(g);
+                vehicle.draw(this, g);
             }
         }
     }

@@ -8,9 +8,9 @@ public class Model {
 
     public Model(){
         vehicles = new ArrayList<AnimatedVehicle>();
-        vehicles.add(new AnimatedVehicle(new Saab95(), "pics/Saab95.jpg", new Point(0, 0)));
-        vehicles.add(new AnimatedVehicle(new Volvo240(), "pics/Volvo240.jpg", new Point(0, 100)));
-        vehicles.add(new AnimatedVehicle(new Scania(), "pics/Scania.jpg", new Point(0, 200)));
+        vehicles.add(new AnimatedVehicle(new Saab95  (new Point2D.Double(0,  0)), "pics/Saab95.jpg"));
+        vehicles.add(new AnimatedVehicle(new Volvo240(new Point2D.Double(0,100)), "pics/Volvo240.jpg"));
+        vehicles.add(new AnimatedVehicle(new Scania  (new Point2D.Double(0,200)), "pics/Scania.jpg"));
     }
 
     public ArrayList<AnimatedVehicle> getVehicles(){
@@ -59,34 +59,34 @@ public class Model {
         }
     }
 
-    // Calls the lift bed method for all vehicle
+    // Calls the lift bed method for all Scania vehicles
     void liftBedAll() {;
         for (AnimatedVehicle vehicle : vehicles){
             MotorVehicle realVehicle = vehicle.getVehicle();
             if (realVehicle instanceof Scania){
-                ((Scania)realVehicle).raiseLoadingPlatform(10);
+                ((Scania)realVehicle).raiseBed(10);
             }
         }
     }
 
-    // Calls the lower bed method for all vehicle
+    // Calls the lower bed method for all Scania vehicles
     void lowerBedAll() {;
         for (AnimatedVehicle vehicle : vehicles){
             MotorVehicle realVehicle = vehicle.getVehicle();
             if (realVehicle instanceof Scania){
-                ((Scania)realVehicle).lowerLoadingPlatform(10);
+                ((Scania)realVehicle).lowerBed(10);
             }
         }
     }
 
-
+    // Calls the move method for all vehicles
     public void moveAll(){
         for (AnimatedVehicle vehicle : vehicles) {
             vehicle.getVehicle().move();
-            Point2D pos = vehicle.getVehicle().getPosition();
-            int x = (int) Math.round(pos.getX());
-            int y = (int) Math.round(pos.getY());
-            vehicle.moveit(x, y);
+//            Point2D pos = vehicle.getVehicle().getPosition();
+//            int x = (int) Math.round(pos.getX());
+//            int y = (int) Math.round(pos.getY());
+//            vehicle.moveit(x, y);
         }
 
     }

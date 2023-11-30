@@ -1,32 +1,39 @@
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class Scania extends Truck{
-    protected double trailerAngle; // The angle of the loading platform
-    public Scania(){
+    public double bedAngle; // The angle of the loading platform
+    public Scania(Point2D.Double position){
+        super(position);
         nrDoors = 2;
         color = Color.black;
         enginePower = 90;
         modelName = "Scania";
-        this.x = 0;
-        this.y = 200;
         stopEngine();
     }
-    public void lowerLoadingPlatform(double angle){
+    public void lowerBed(double angle){
         if (currentSpeed == 0) {
-            trailerAngle = limitTo(trailerAngle - angle, 0, 70);
+            bedAngle = limitTo(bedAngle - angle, 0, 70);
         }
     }
-    public void raiseLoadingPlatform(double angle){
+    public void raiseBed(double angle){
         if (currentSpeed == 0) {
-            trailerAngle = limitTo(trailerAngle + angle, 0, 70);
+            bedAngle = limitTo(bedAngle + angle, 0, 70);
         }
     }
     public double speedFactor(){
-        if (trailerAngle == 0){
+        if (bedAngle == 0){
             return 0.01 * enginePower;
         }
         else{
             return 0.0;
+        }
+    }
+
+    @Override
+    public void startEngine(){
+        if (bedAngle == 0){
+            super.startEngine();
         }
     }
 }

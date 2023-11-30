@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.Stack;
 
 public class CarTransport extends Truck {
@@ -9,7 +10,8 @@ public class CarTransport extends Truck {
     private final double MAXDISTANCE = 10;
     private final double CARSPACING = 6.0;
 
-    public CarTransport() {
+    public CarTransport(Point2D.Double position){
+        super(position);
         nrDoors = 2;
         color = Color.orange;
         enginePower = 90;

@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 
 public class Saab95 extends Car{
@@ -10,14 +11,13 @@ public class Saab95 extends Car{
         turboOn = false;
     }
 
-    public Saab95(){
+    public Saab95(Point2D.Double position){
+        super(position);
         nrDoors = 2;
         color = Color.red;
         enginePower = 125;
 	    turboOn = false;
         modelName = "Saab95";
-        this.x = 0;
-        this.y = 0;
         stopEngine();
     }
 

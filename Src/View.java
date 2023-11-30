@@ -28,8 +28,8 @@ public class View extends JFrame{
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
-    int gasAmount = 0;
+    JSpinner gasAndBrakeSpinner = new JSpinner();
+    int gasAndBrakeAmount = 0;
     JLabel gasLabel = new JLabel("Amount of gas");
 
     JPanel brakePanel = new JPanel();
@@ -39,7 +39,7 @@ public class View extends JFrame{
     JButton turboOnButton = new JButton("Saab Turbo on");
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
+    JButton lowerBedButton = new JButton("Scania Lower Bed");
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
@@ -71,16 +71,16 @@ public class View extends JFrame{
                         0, //min
                         100, //max
                         1);//step
-        gasSpinner = new JSpinner(spinnerModel);
-        gasSpinner.addChangeListener(new ChangeListener() {
+        gasAndBrakeSpinner = new JSpinner(spinnerModel);
+        gasAndBrakeSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+                gasAndBrakeAmount = (int) ((JSpinner)e.getSource()).getValue();
             }
         });
 
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
-        gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
+        gasPanel.add(gasAndBrakeSpinner, BorderLayout.PAGE_END);
 
         this.add(gasPanel);
 
@@ -120,13 +120,13 @@ public class View extends JFrame{
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.gasAll(gasAmount/100.0);
+                controller.gasAll(gasAndBrakeAmount /100.0);
             }
         });
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.brakeAll(gasAmount/100.0);
+                controller.brakeAll(gasAndBrakeAmount /100.0);
             }
         });
         stopButton.addActionListener(new ActionListener() {

@@ -1,8 +1,11 @@
 import org.junit.Test;
+
+import java.awt.geom.Point2D;
+
 import static org.junit.Assert.assertEquals;
 
 public class TestSaab95 {
-    Saab95 car = new Saab95();
+    Saab95 car = new Saab95(new Point2D.Double(0,  0));
     @Test
     public void testGasWithTurbo() {
         car.setTurboOn();

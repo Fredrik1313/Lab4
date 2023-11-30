@@ -23,7 +23,7 @@ abstract class MotorVehicle implements Movable {
     public Color getColor(){
         return color;
     }
-    public Point2D getPosition(){
+    public Point2D.Double getPosition(){
         return new Point2D.Double(x,y);
     }
     public void setColor(Color clr){color = clr;}
@@ -37,17 +37,17 @@ abstract class MotorVehicle implements Movable {
     protected void incrementSpeed(double amount) {
         currentSpeed = limitTo((currentSpeed + speedFactor() * amount),0.0, enginePower);
     }
-    public MotorVehicle(){
-        this.x = x;
-        this.y = y;
+    public MotorVehicle(Point2D.Double position){
+        x = position.x;
+        y = position.y;
     }
     protected void decrementSpeed(double amount) {
         currentSpeed = limitTo((currentSpeed - speedFactor() * amount),0.0, enginePower);
     }
     public void gas(double amount){
-        if ((amount >= 0) && (amount <= 1)) {
-            incrementSpeed(amount);
-        }
+            if ((amount >= 0) && (amount <= 1)) {
+                incrementSpeed(amount);
+            }
     }
     public void brake(double amount){
         if ((amount >= 0) && (amount <= 1)) {
