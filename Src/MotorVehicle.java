@@ -37,6 +37,10 @@ abstract class MotorVehicle implements Movable {
     protected void incrementSpeed(double amount) {
         currentSpeed = limitTo((currentSpeed + speedFactor() * amount),0.0, enginePower);
     }
+    protected void negativeIncrementSpeed(double amount) {
+        currentSpeed = limitTo((currentSpeed + speedFactor() * amount),-enginePower, 0);
+    }
+
     public MotorVehicle(Point2D.Double position){
         x = position.x;
         y = position.y;
@@ -44,14 +48,27 @@ abstract class MotorVehicle implements Movable {
     protected void decrementSpeed(double amount) {
         currentSpeed = limitTo((currentSpeed - speedFactor() * amount),0.0, enginePower);
     }
+    protected void negativeDecrementSpeed(double amount) {
+        currentSpeed = limitTo((currentSpeed - speedFactor() * amount),-enginePower, 0);
+    }
+
     public void gas(double amount){
-            if ((amount >= 0) && (amount <= 1)) {
+        if ((amount >= 0) && (amount <= 1)) {
+            if (currentSpeed >= 0) {
                 incrementSpeed(amount);
+            } else {
+                negativeIncrementSpeed(-amount);
             }
+        }
     }
     public void brake(double amount){
         if ((amount >= 0) && (amount <= 1)) {
-            decrementSpeed(amount);
+            if (currentSpeed >= 0){
+                decrementSpeed(amount);
+            } else {
+                negativeDecrementSpeed(-amount);
+            }
+
         }
     }
     public void stopEngine(){
