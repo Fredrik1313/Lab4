@@ -28,8 +28,8 @@ public class AnimatedVehicle {
         Point2D.Double position = vehicle.getPosition();
         int x = (int)position.x, y = (int)position.y;
         if((x<0) || (x+image.getWidth() >= panel.getWidth())){
-
             vehicle.currentSpeed = -vehicle.currentSpeed;
+            vehicle.setGoingBack();
         }
         g.drawImage(image, (int)position.x, (int)position.y, null);
     }

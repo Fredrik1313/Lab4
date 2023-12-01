@@ -83,10 +83,6 @@ public class Model {
     public void moveAll(){
         for (AnimatedVehicle vehicle : vehicles) {
             vehicle.getVehicle().move();
-//            Point2D pos = vehicle.getVehicle().getPosition();
-//            int x = (int) Math.round(pos.getX());
-//            int y = (int) Math.round(pos.getY());
-//            vehicle.moveit(x, y);
         }
 
     }

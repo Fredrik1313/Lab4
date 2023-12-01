@@ -11,6 +11,7 @@ abstract class MotorVehicle implements Movable {
     protected double x; // The car's x-coordinate
     protected double y; // The car's y-coordinate
     protected double direction = 0.0; // The car's driving direction
+    public boolean goingBack = false;
     private final static double TURNANGLE = 90.0; // Angle step size
 
     // Methods
@@ -28,7 +29,14 @@ abstract class MotorVehicle implements Movable {
     }
     public void setColor(Color clr){color = clr;}
     public void startEngine(){
-        currentSpeed = 0.1;
+        if (!goingBack){
+            currentSpeed = 0.1;
+        } else{
+            currentSpeed = -0.1;
+        }
+    }
+    public void setGoingBack(){
+        goingBack = !goingBack;
     }
     // Help method
     protected double limitTo(double value, double min, double max) {
