@@ -13,7 +13,6 @@ public class AnimatedVehicle {
 
         try {
             image = ImageIO.read(DrawPanel.class.getResourceAsStream(imgFileName));
-
         } catch (IOException ex){
             ex.printStackTrace();
         }
