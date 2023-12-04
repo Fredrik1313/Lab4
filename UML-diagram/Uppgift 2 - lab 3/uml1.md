@@ -159,16 +159,16 @@ Car <- Volvo240
 Car <- Saab95
 
 View <- DrawPanel
-Model <- View
-Model <- Controller
-Controller <- View
+Model <-[#magenta] View
+Model <-[#magenta] Controller
+Controller <-[#orange] View
 App <-[#red]-- Controller
 note on link #white
 The color of the arrows is only for 
 clarification on where they are headed
 end note
 JPanel <|- DrawPanel
-JFrame <|- View
+JFrame <|-[#purple] View
 ArrayList <- Model
 Swing <--- View
 Swing <--- DrawPanel

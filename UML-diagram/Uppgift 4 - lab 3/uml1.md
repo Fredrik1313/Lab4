@@ -6,11 +6,14 @@ class App{
   Controller controller
   
   + main(String []args): void
-  + App(): ????????
+  + App()
 }
 
 class Model {
 - ArrayList<AnimatedVehicle> vehicles
+- delay: delay
+    
+- Timer(delay, new TimerListener())
 + getVehicles(): vehicles
 + gasAll(double amount): void
 + brakeAll(double amount): void
@@ -33,14 +36,14 @@ class View{
 + View(String frameName, Model model, Controller controller): 
 + initComponents(String title): void
 + reDraw(): void
++ draw(DrawPanel panel, Graphics g): void
+ # paintComponent(Graphics g): void
 }
 
 class Controller{
     Model model
     View view
-    - delay: delay
-    
-    - Timer(delay, new TimerListener())
+
     + Controller(Model model)
     + setView(View view): void
     + startTimer(): void
@@ -63,7 +66,7 @@ class image{}
 class DrawPanel{
  Model model
  + DrawPanel(int x, int y, Model model)
- # paintComponent(Graphics g): void
+
 }
 
 class AnimatedVehicle{
@@ -72,7 +75,6 @@ class AnimatedVehicle{
  
  + AnimatedVehicle(MotorVehicle vehicle, String imgFileName):
  + getVehicle(): vehicle
- + draw(DrawPanel panel, Graphics g): void
 }
 
 abstract class MotorVehicle{
@@ -113,12 +115,14 @@ move(): void
 }
 
 class Volvo240{
+- image: BufferedImage
 - trimFactor: double
 + Volvo240(Point2D.Double position)
 + speedFactor(): double
 }
 
 class Scania {
+- image: BufferedImage
 + bedAngle: double 
 + Scania(Point2D.Double position)
 + lowerBed(double angle): void
@@ -128,6 +132,7 @@ class Scania {
 }
 
 class Saab95 {
+- image: BufferedImage
 - turboOn: boolean 
 + Saab95(Point2D.Double position)
 + setTurboOn(): void
@@ -139,17 +144,19 @@ class Saab95 {
 Movable <|. MotorVehicle
 AnimatedVehicle <- MotorVehicle
 Model <- AnimatedVehicle
-image <-  AnimatedVehicle
 
+Point2D <-[#green] Model
+Point2D <-[#green] AnimatedVehicle
+Point2D <-[#green] MotorVehicle
+Point2D <-[#green]-- Truck
+Point2D <-[#green]-- Car
+Point2D <-[#green]-- Scania 
+Point2D <-[#green]-- Volvo240
+Point2D <-[#green]-- Saab95
 
-Point2D <- Model
-Point2D <- AnimatedVehicle
-Point2D <- MotorVehicle
-Point2D <--- Truck
-Point2D <--- Car
-Point2D <--- Scania 
-Point2D <--- Volvo240
-Point2D <--- Saab95
+image <-  Saab95
+ïmage <- Volvo240
+image <- Scania
 
 MotorVehicle <- Truck
 MotorVehicle <-Car
@@ -159,13 +166,18 @@ Car <- Saab95
 
 View <- DrawPanel
 Model <- View
-Model <- Controller
+Model <-[#blue] Controller
 Controller <- View
-App <--- Controller
+App <-[#red]-- Controller
+note on link #white
+The color of the arrows is only for 
+clarification on where they are headed
+end note
 JPanel <|- DrawPanel
-JFrame <|- View
-ArrayList <- Model
+JFrame <|-[#orange] View
+ArrayList <-[#purple] Model
 Swing <--- View
 Swing <--- DrawPanel
+
 
 @enduml
