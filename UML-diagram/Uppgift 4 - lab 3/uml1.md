@@ -6,12 +6,12 @@ class App{
   Controller controller
   
   + main(String []args): void
-  + App()
+  + App(): ????????
 }
 
 class Model {
 - ArrayList<AnimatedVehicle> vehicles
-+ getVehicles()
++ getVehicles(): vehicles
 + gasAll(double amount): void
 + brakeAll(double amount): void
 ~ stopAll(): void
@@ -24,13 +24,13 @@ class Model {
 }
 
 class View{
-- int x
-- int y
+- x: int
+- y: int
   Model model
   Controller controller;
   DrawPanel drawPanel;
 
-+ View(String frameName, Model model, Controller controller)
++ View(String frameName, Model model, Controller controller): 
 + initComponents(String title): void
 + reDraw(): void
 }
@@ -38,7 +38,7 @@ class View{
 class Controller{
     Model model
     View view
-    - int delay
+    - delay: delay
     
     - Timer(delay, new TimerListener())
     + Controller(Model model)
@@ -69,25 +69,27 @@ class DrawPanel{
 class AnimatedVehicle{
  - MotorVehicle vehicle
  - BufferedImage image
- + AnimatedVehicle(MotorVehicle vehicle, String imgFileName)
- + getVehicle()
+ 
+ + AnimatedVehicle(MotorVehicle vehicle, String imgFileName):
+ + getVehicle(): vehicle
  + draw(DrawPanel panel, Graphics g): void
 }
 
 abstract class MotorVehicle{
- ~ double enginePower
- ~ double currentSpeed
- ~ String modelName
- ~ double x
- ~ double y
- ~ double direction
- + boolean goingBack
- + getEnginePower()
- + getCurrentSpeed()
- + getPosition
+ ~ enginePower: double 
+ ~ currentSpeed: double
+ ~ modelName: String 
+ ~ x: double
+ ~ y: double
+ ~ direction: double
+ + goingBack:boolean
+ 
+ + getEnginePower(): double 
+ + getCurrentSpeed(): double
+ + getPosition(): Point2D.Double
  + startEngine(): void
- + setGoingBack()
- ~ limitTo(double value, double min, double max)
+ + setGoingBack(): boolean
+ ~ limitTo(double value, double min, double max): double
  ~ incrementSpeed(double amount): void
  ~ negativeIncrementSpeed(double amount): void 
  + MotorVehicle(Point2D.Double position)
@@ -111,54 +113,58 @@ move(): void
 }
 
 class Volvo240{
-- double trimFactor
+- trimFactor: double
 + Volvo240(Point2D.Double position)
-+ speedFactor()
++ speedFactor(): double
 }
 
 class Scania {
-+ double bedAngle
++ bedAngle: double 
 + Scania(Point2D.Double position)
 + lowerBed(double angle): void
-+ raiseBed(double angle)
-+ speedFactor()
++ raiseBed(double angle): void
++ speedFactor(): double
 + startEngine(): void
 }
 
 class Saab95 {
-- boolean turboOn
+- turboOn: boolean 
++ Saab95(Point2D.Double position)
 + setTurboOn(): void
 + setTurboOff(): void
-+ Saab95(Point2D.Double position)
-+ speedFactor()
++ speedFactor(): double
 }
 
 
-Movable <|... MotorVehicle
-AnimatedVehicle <--- MotorVehicle
-Model <--- AnimatedVehicle
-image <---  AnimatedVehicle
+Movable <|. MotorVehicle
+AnimatedVehicle <- MotorVehicle
+Model <- AnimatedVehicle
+image <-  AnimatedVehicle
 
-DrawPanel <--- AnimatedVehicle
 
-Point2D <--- Model
-Point2D <--- AnimatedVehicle
-Point2D <--- MotorVehicle
+Point2D <- Model
+Point2D <- AnimatedVehicle
+Point2D <- MotorVehicle
 Point2D <--- Truck
 Point2D <--- Car
 Point2D <--- Scania 
 Point2D <--- Volvo240
 Point2D <--- Saab95
 
+MotorVehicle <- Truck
+MotorVehicle <-Car
+Truck <- Scania 
+Car <- Volvo240
+Car <- Saab95
 
-View <--- DrawPanel
-Model <--- View
-Model <--- Controller
-Controller <--- View
+View <- DrawPanel
+Model <- View
+Model <- Controller
+Controller <- View
 App <--- Controller
-JPanel <|--- DrawPanel
-JFrame <|--- View
-ArrayList <--- Model
+JPanel <|- DrawPanel
+JFrame <|- View
+ArrayList <- Model
 Swing <--- View
 Swing <--- DrawPanel
 
