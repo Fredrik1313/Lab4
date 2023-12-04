@@ -141,16 +141,16 @@ AnimatedVehicle <- MotorVehicle
 Model <- AnimatedVehicle
 image <-  AnimatedVehicle
 
-DrawPanel <--- AnimatedVehicle
+DrawPanel <-[#blue]-- AnimatedVehicle
 
-Point2D <- Model
-Point2D <- AnimatedVehicle
-Point2D <- MotorVehicle
-Point2D <--- Truck
-Point2D <--- Car
-Point2D <--- Scania 
-Point2D <--- Volvo240
-Point2D <--- Saab95
+Point2D <-[#green] Model
+Point2D <-[#green] AnimatedVehicle
+Point2D <-[#green] MotorVehicle
+Point2D <-[#green]-- Truck
+Point2D <-[#green]-- Car
+Point2D <-[#green]-- Scania 
+Point2D <-[#green]-- Volvo240
+Point2D <-[#green]-- Saab95
 
 MotorVehicle <- Truck
 MotorVehicle <-Car
@@ -162,11 +162,16 @@ View <- DrawPanel
 Model <- View
 Model <- Controller
 Controller <- View
-App <--- Controller
+App <-[#red]-- Controller
+note on link #white
+The color of the arrows is only for 
+clarification on where they are headed
+end note
 JPanel <|- DrawPanel
 JFrame <|- View
 ArrayList <- Model
 Swing <--- View
 Swing <--- DrawPanel
+
 
 @enduml
