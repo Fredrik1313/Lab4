@@ -1,14 +1,17 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
 
 public class Scania extends Truck{
     public double bedAngle; // The angle of the loading platform
+    private BufferedImage image;
     public Scania(Point2D.Double position){
         super(position);
         nrDoors = 2;
         color = Color.black;
         enginePower = 90;
         modelName = "Scania";
+        //image = "pics/Scania.jpg";
         stopEngine();
     }
     public void lowerBed(double angle){

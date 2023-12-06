@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.awt.geom.Point2D;
 
 abstract class Car extends MotorVehicle{

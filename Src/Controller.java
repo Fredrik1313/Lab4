@@ -1,13 +1,13 @@
 /*
  * This class represents the Controller part in the MVC pattern.
- * It's responsibilities is to listen to the View and responds in a appropriate manner by
+ * It is responsibilities is to listen to the View and responds in an appropriate manner by
  * modifying the model state and the updating the view.
  */
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Point2D;
+//import java.awt.geom.Point2D;
 
 public class Controller {
     // The model of the MVC pattern
@@ -51,25 +51,25 @@ public class Controller {
         model.brakeAll(amount);
     }
     // Calls the stop method for all vehicle
-    void stopAll() {;
+    void stopAll() {
         model.stopAll();
     }
     // Calls the start method for all vehicle
-    void startAll() {;
+    void startAll() {
         model.startAll();
     }
     // Calls the turbo off method for all vehicle
-    void turboOffAll() {;
+    void turboOffAll() {
         model.turboOffAll();
     }
     // Calls the turbo on method for all vehicle
-    void turboOnAll() {;
+    void turboOnAll() {
         model.turboOnAll();
     }
-    void liftBedAll() {;
+    void liftBedAll() {
         model.liftBedAll();
     }
-    void lowerBedAll() {;
+    void lowerBedAll() {
         model.lowerBedAll();
     }
 

@@ -19,5 +19,6 @@ public class App {
 
         // Start the animation
         controller.startTimer();
+        //model.startTimer(); // reDraw fungerar inte men "tiden" fungerar
     }
 }

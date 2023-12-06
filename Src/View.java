@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
- * It initializes with being center on the screen and attaching it's controller in it's state.
+ * It initializes with being center on the screen and attaching it is controller in it is state.
  * It communicates with the Controller by calling methods of it when an action fires of in
- * each of it's components.
+ * each of it is components.
  **/
 
 public class View extends JFrame{
@@ -39,6 +39,9 @@ public class View extends JFrame{
     JButton lowerBedButton = new JButton("Scania Lower Bed");
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
+    JButton addACar = new JButton("Add a car");
+    JButton removeACar = new JButton("Remove a car");
+
 
     // Constructor
     public View(String frameName, Model model, Controller controller){
@@ -98,7 +101,6 @@ public class View extends JFrame{
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
-
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
         startButton.setPreferredSize(new Dimension(X/5-15,200));
@@ -109,6 +111,16 @@ public class View extends JFrame{
         stopButton.setForeground(Color.black);
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
+
+        addACar.setBackground(Color.green);
+        addACar.setForeground(Color.black);
+        addACar.setPreferredSize(new Dimension(X/5-15,200));
+        this.add(addACar);
+
+        removeACar.setBackground(Color.orange);
+        removeACar.setForeground(Color.black);
+        removeACar.setPreferredSize(new Dimension(X/5-15,200));
+        this.add(removeACar);
 
         // This actionListener is for the gas button only
         gasButton.addActionListener(new ActionListener() {
