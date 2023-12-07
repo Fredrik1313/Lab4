@@ -185,7 +185,6 @@ public class View extends JFrame implements redrawObserver {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    //TODO: For each time the timer "ticks" reDraw yourself
     public void redraw(){
         drawPanel.repaint();
     }
