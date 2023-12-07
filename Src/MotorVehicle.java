@@ -62,7 +62,7 @@ abstract class MotorVehicle implements Movable {
 
     public void gas(double amount){
         if ((amount >= 0) && (amount <= 1)) {
-            if (currentSpeed >= 0) {
+            if (!goingBack) {
                 incrementSpeed(amount);
             } else {
                 negativeIncrementSpeed(-amount);
@@ -71,7 +71,7 @@ abstract class MotorVehicle implements Movable {
     }
     public void brake(double amount){
         if ((amount >= 0) && (amount <= 1)) {
-            if (currentSpeed >= 0){
+            if (!goingBack){
                 decrementSpeed(amount);
             } else {
                 negativeDecrementSpeed(-amount);

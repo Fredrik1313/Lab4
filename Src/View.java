@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  * each of it is components.
  **/
 
-public class View extends JFrame{
+public class View extends JFrame implements redrawObserver {
     private static final int X = 800;
     private static final int Y = 800;
 
@@ -21,7 +21,7 @@ public class View extends JFrame{
 
     Controller controller;
 
-    //   DrawPanel drawPanel = new DrawPanel(X, Y-240, model);
+    //DrawPanel drawPanel = new DrawPanel(X, Y-240, model);
     DrawPanel drawPanel;
 
     JPanel controlPanel = new JPanel();
@@ -39,17 +39,17 @@ public class View extends JFrame{
     JButton lowerBedButton = new JButton("Scania Lower Bed");
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
-    JButton addACar = new JButton("Add a car");
-    JButton removeACar = new JButton("Remove a car");
+    JButton addCar = new JButton("Add car");
+    JButton removeCar = new JButton("Remove car");
 
 
     // Constructor
     public View(String frameName, Model model, Controller controller){
         this.model = model;
         this.controller = controller;
-        controller.setView(this);
         drawPanel = new DrawPanel(X, Y-240, model);
         initComponents(frameName);
+        model.addRedrawObserver(this);
     }
 
     // Sets everything in place and fits everything
@@ -112,15 +112,15 @@ public class View extends JFrame{
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
 
-        addACar.setBackground(Color.green);
-        addACar.setForeground(Color.black);
-        addACar.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(addACar);
+        addCar.setBackground(Color.green);
+        addCar.setForeground(Color.black);
+        addCar.setPreferredSize(new Dimension(X/5-15,200));
+        this.add(addCar);
 
-        removeACar.setBackground(Color.orange);
-        removeACar.setForeground(Color.black);
-        removeACar.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(removeACar);
+        removeCar.setBackground(Color.orange);
+        removeCar.setForeground(Color.black);
+        removeCar.setPreferredSize(new Dimension(X/5-15,200));
+        this.add(removeCar);
 
         // This actionListener is for the gas button only
         gasButton.addActionListener(new ActionListener() {
@@ -185,7 +185,8 @@ public class View extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void reDraw(){
+    //TODO: For each time the timer "ticks" reDraw yourself
+    public void redraw(){
         drawPanel.repaint();
     }
 }

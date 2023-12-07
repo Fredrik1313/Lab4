@@ -10,19 +10,19 @@ public class TestScania {
     @Test
     public void testRaisingPlatformAboveLimit(){
         Truck.raiseBed(80);
-        assertEquals(70, Truck.bedAngle, 1e-6);
+        assertEquals(70, Truck.getBedAngle(), 1e-6);
     }
 
     @Test
     public void testLoweringPlatformBelowLimit(){
         Truck.lowerBed(50);
-        assertEquals(0, Truck.bedAngle, 1e-6);
+        assertEquals(0, Truck.getBedAngle(), 1e-6);
     }
 
     @Test
     public void testRaisingPlatform(){
         Truck.raiseBed(50);
-        assertEquals(50, Truck.bedAngle, 1e-6);
+        assertEquals(50, Truck.getBedAngle(), 1e-6);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TestScania {
     public void testTrailerAngleWhileMoving(){
         Truck.gas(0.5);
         Truck.raiseBed(50);
-        assertEquals(0, Truck.bedAngle, 1e-6);
+        assertEquals(0, Truck.getBedAngle(), 1e-6);
     }
 
     @Test
