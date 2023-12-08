@@ -68,6 +68,17 @@ public class Model {
             vehicle.getVehicle().startEngine();
         }
     }
+    public void addCar() {
+        for (AnimatedVehicle vehicle : vehicles){
+            vehicle.getVehicle().startEngine();
+        }
+    }
+    public void removeCar() {
+        for (AnimatedVehicle vehicle : vehicles){
+            vehicle.getVehicle().startEngine();
+        }
+    }
+
     // Calls the turbo off method for all vehicle
     public void turboOffAll() {
         for (AnimatedVehicle vehicle : vehicles){

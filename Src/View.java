@@ -39,8 +39,8 @@ public class View extends JFrame implements redrawObserver {
     JButton lowerBedButton = new JButton("Scania Lower Bed");
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
-    JButton addCar = new JButton("Add car");
-    JButton removeCar = new JButton("Remove car");
+    JButton addCarButton = new JButton("Add car");
+    JButton removeCarButton = new JButton("Remove car");
 
 
     // Constructor
@@ -112,15 +112,15 @@ public class View extends JFrame implements redrawObserver {
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
 
-        addCar.setBackground(Color.green);
-        addCar.setForeground(Color.black);
-        addCar.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(addCar);
+        addCarButton.setBackground(Color.green);
+        addCarButton.setForeground(Color.black);
+        addCarButton.setPreferredSize(new Dimension(X/5-15,200));
+        this.add(addCarButton);
 
-        removeCar.setBackground(Color.orange);
-        removeCar.setForeground(Color.black);
-        removeCar.setPreferredSize(new Dimension(X/5-15,200));
-        this.add(removeCar);
+        removeCarButton.setBackground(Color.orange);
+        removeCarButton.setForeground(Color.black);
+        removeCarButton.setPreferredSize(new Dimension(X/5-15,200));
+        this.add(removeCarButton);
 
         // This actionListener is for the gas button only
         gasButton.addActionListener(new ActionListener() {
@@ -169,6 +169,20 @@ public class View extends JFrame implements redrawObserver {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.lowerBedAll();
+            }
+        });
+
+        addCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.addCar();
+            }
+        });
+
+        removeCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.removeCar();
             }
         });
 

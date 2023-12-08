@@ -1,8 +1,4 @@
-/*
- * This class represents the Controller part in the MVC pattern.
- * It is responsibilities is to listen to the View and responds in an appropriate manner by
- * modifying the model state and the updating the view.
- */
+
 public class Controller {
     // The model of the MVC pattern
     Model model;
@@ -11,36 +7,42 @@ public class Controller {
         // Store a reference to the MVC model
         this.model = model;
     }
-
     // Calls the gas method for all vehicle
-    void gasAll(double amount) {
+    public void gasAll(double amount) {
         model.gasAll(amount);
     }
 
     // Calls the brake method for all vehicle
-    void brakeAll(double amount) {
+    public void brakeAll(double amount) {
         model.brakeAll(amount);
     }
     // Calls the stop method for all vehicle
-    void stopAll() {
+    public void stopAll() {
         model.stopAll();
     }
     // Calls the start method for all vehicle
-    void startAll() {
+    public void startAll() {
         model.startAll();
     }
+    // Calls the add car method for all vehicle
+    public void addCar(){
+        model.addCar();
+    }
+    public void removeCar(){
+        model.removeCar();
+    }
     // Calls the turbo off method for all vehicle
-    void turboOffAll() {
+    public void turboOffAll() {
         model.turboOffAll();
     }
     // Calls the turbo on method for all vehicle
-    void turboOnAll() {
+    public void turboOnAll() {
         model.turboOnAll();
     }
-    void liftBedAll() {
+    public void liftBedAll() {
         model.liftBedAll();
     }
-    void lowerBedAll() {
+    public void lowerBedAll() {
         model.lowerBedAll();
     }
 
