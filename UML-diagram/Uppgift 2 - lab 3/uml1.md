@@ -6,7 +6,7 @@ class App{
   Controller controller
   
   + main(String []args): void
-  + App(): ????????
+  + App()
 }
 
 class Model {

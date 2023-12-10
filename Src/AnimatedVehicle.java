@@ -6,16 +6,10 @@ import java.io.IOException;
 
 public class AnimatedVehicle {
     private MotorVehicle vehicle;
-    private BufferedImage image;
 
-    public AnimatedVehicle(MotorVehicle vehicle, String imgFileName){
+    public AnimatedVehicle(MotorVehicle vehicle){
         this.vehicle = vehicle;
 
-        try {
-            image = ImageIO.read(DrawPanel.class.getResourceAsStream(imgFileName));
-        } catch (IOException ex){
-            ex.printStackTrace();
-        }
     }
 
     public MotorVehicle getVehicle() {
@@ -24,6 +18,7 @@ public class AnimatedVehicle {
 
 
     public void draw(DrawPanel panel, Graphics g){
+        BufferedImage image = vehicle.getImage();
         Point2D.Double position = vehicle.getPosition();
         int x = (int)position.x, y = (int)position.y;
         if((x<0) || (x+image.getWidth() >= panel.getWidth())){

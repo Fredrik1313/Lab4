@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
 import java.util.Stack;
 
 public class CarTransport extends Truck {
@@ -9,6 +10,8 @@ public class CarTransport extends Truck {
     protected final int MAXLOAD = 8;
     private final double MAXDISTANCE = 10;
     private final double CARSPACING = 6.0;
+    private static BufferedImage image = null;
+    private static final String IMGFILENAME = "pics/Scania.jpg";
 
     public CarTransport(Point2D.Double position){
         super(position);
@@ -16,6 +19,9 @@ public class CarTransport extends Truck {
         color = Color.orange;
         enginePower = 90;
         modelName = "CarTransport";
+        if (image == null){
+            image = readImage(IMGFILENAME);
+        }
         stopEngine();
     }
 
@@ -71,5 +77,9 @@ public class CarTransport extends Truck {
         } else {
             return 0.0;
         }
+    }
+
+    public BufferedImage getImage(){
+        return image;
     }
 }

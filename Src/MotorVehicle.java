@@ -1,13 +1,18 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
 abstract class MotorVehicle implements Movable {
     // Variables
-    protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
+    protected double enginePower; // Engine power of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
-    abstract double speedFactor(); //
+    abstract double speedFactor();
     protected double x; // The car's x-coordinate
     protected double y; // The car's y-coordinate
     protected double direction = 0.0; // The car's driving direction
@@ -76,7 +81,6 @@ abstract class MotorVehicle implements Movable {
             } else {
                 negativeDecrementSpeed(-amount);
             }
-
         }
     }
     public void stopEngine(){
@@ -94,4 +98,15 @@ abstract class MotorVehicle implements Movable {
     public void turnRight(){
         direction -= TURNANGLE;
     }
+
+    protected BufferedImage readImage(String fileName){
+        BufferedImage image = null;
+            try {
+                image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/" + fileName)));
+            } catch (IOException ex){
+                ex.printStackTrace();
+            }
+        return image;
+    }
+    abstract BufferedImage getImage();
 }

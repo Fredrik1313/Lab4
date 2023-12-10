@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
  **/
 
 public class View extends JFrame implements redrawObserver {
-    private static final int X = 800;
-    private static final int Y = 800;
+    private static final int X = 1000;
+    private static final int Y = 900;
 
     // The model member
     Model model;

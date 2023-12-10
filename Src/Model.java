@@ -7,6 +7,7 @@ import java.util.ArrayList;
 // This is our model of the MVC
 public class Model {
     private ArrayList<AnimatedVehicle> vehicles;
+    private MotorVehicleFactory motorVehicleFactory;
     private ArrayList<redrawObserver> redrawObservers;
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
@@ -17,10 +18,11 @@ public class Model {
 
     public Model(){
         vehicles = new ArrayList<AnimatedVehicle>();
+        motorVehicleFactory  = new MotorVehicleFactory();
         redrawObservers = new ArrayList<redrawObserver>();
-        vehicles.add(new AnimatedVehicle(new Saab95  (new Point2D.Double(0,  0)), "pics/Saab95.jpg"));
-        vehicles.add(new AnimatedVehicle(new Volvo240(new Point2D.Double(0,100)), "pics/Volvo240.jpg"));
-        vehicles.add(new AnimatedVehicle(new Scania  (new Point2D.Double(0,200)), "pics/Scania.jpg"));
+        vehicles.add(new AnimatedVehicle(new Saab95  (new Point2D.Double(0,  0))));
+        vehicles.add(new AnimatedVehicle(new Volvo240(new Point2D.Double(0,65))));
+        vehicles.add(new AnimatedVehicle(new Scania  (new Point2D.Double(0,130))));
     }
 
     public void startTimer(){
@@ -69,13 +71,14 @@ public class Model {
         }
     }
     public void addCar() {
-        for (AnimatedVehicle vehicle : vehicles){
-            vehicle.getVehicle().startEngine();
+        if (vehicles.size() < 10){
+            Point2D.Double position = new Point2D.Double(0, vehicles.size()*65);
+            if (vehicles.add(new AnimatedVehicle(motorVehicleFactory.createRandomMotorVehicle(position))));
         }
     }
     public void removeCar() {
-        for (AnimatedVehicle vehicle : vehicles){
-            vehicle.getVehicle().startEngine();
+        if (!vehicles.isEmpty()){
+            vehicles.remove(vehicles.size()-1);
         }
     }
 
