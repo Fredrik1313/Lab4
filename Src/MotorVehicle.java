@@ -17,6 +17,7 @@ abstract class MotorVehicle implements Movable {
     protected double y; // The car's y-coordinate
     protected double direction = 0.0; // The car's driving direction
     public boolean goingBack = false;
+    private boolean engineOn = false;
     private final static double TURNANGLE = 90.0; // Angle step size
 
     // Methods
@@ -39,6 +40,7 @@ abstract class MotorVehicle implements Movable {
         } else{
             currentSpeed = -0.1;
         }
+        engineOn = true;
     }
     public void setGoingBack(){
         goingBack = !goingBack;
@@ -66,11 +68,13 @@ abstract class MotorVehicle implements Movable {
     }
 
     public void gas(double amount){
-        if ((amount >= 0) && (amount <= 1)) {
-            if (!goingBack) {
-                incrementSpeed(amount);
-            } else {
-                negativeIncrementSpeed(-amount);
+        if (engineOn) {
+            if ((amount >= 0) && (amount <= 1)) {
+                if (!goingBack) {
+                    incrementSpeed(amount);
+                } else {
+                    negativeIncrementSpeed(-amount);
+                }
             }
         }
     }
@@ -85,6 +89,7 @@ abstract class MotorVehicle implements Movable {
     }
     public void stopEngine(){
         currentSpeed = 0;
+        engineOn = false;
     }
     public void  move(){
         double distance = currentSpeed;

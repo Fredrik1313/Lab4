@@ -16,7 +16,6 @@ public class AnimatedVehicle {
         return vehicle;
     }
 
-
     public void draw(DrawPanel panel, Graphics g){
         BufferedImage image = vehicle.getImage();
         Point2D.Double position = vehicle.getPosition();
