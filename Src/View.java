@@ -4,6 +4,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -15,6 +16,8 @@ import java.awt.event.ActionListener;
 public class View extends JFrame implements redrawObserver {
     private static final int X = 1000;
     private static final int Y = 900;
+
+    private ArrayList<controllerObserver> controllerObservers;
 
     // The model member
     Model model;
@@ -47,6 +50,7 @@ public class View extends JFrame implements redrawObserver {
     public View(String frameName, Model model, Controller controller){
         this.model = model;
         this.controller = controller;
+        controllerObservers = new ArrayList<controllerObserver>();
         drawPanel = new DrawPanel(X, Y-240, model);
         initComponents(frameName);
         model.addRedrawObserver(this);

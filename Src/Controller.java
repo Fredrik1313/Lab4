@@ -1,5 +1,5 @@
 
-public class Controller {
+public class Controller implements controllerObserver {
     // The model of the MVC pattern
     Model model;
 
