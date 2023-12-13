@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Model {
     private ArrayList<AnimatedVehicle> vehicles;
     private MotorVehicleFactory motorVehicleFactory;
-    private ArrayList<redrawObserver> redrawObservers;
+    private ArrayList<RedrawObserver> RedrawObservers;
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
@@ -19,7 +19,7 @@ public class Model {
     public Model(){
         vehicles = new ArrayList<AnimatedVehicle>();
         motorVehicleFactory  = new MotorVehicleFactory();
-        redrawObservers = new ArrayList<redrawObserver>();
+        RedrawObservers = new ArrayList<RedrawObserver>();
         vehicles.add(new AnimatedVehicle(new Saab95  (new Point2D.Double(0,  0))));
         vehicles.add(new AnimatedVehicle(new Volvo240(new Point2D.Double(0,65))));
         vehicles.add(new AnimatedVehicle(new Scania  (new Point2D.Double(0,130))));
@@ -33,14 +33,14 @@ public class Model {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             moveAll();
-            for (redrawObserver observer: redrawObservers){
+            for (RedrawObserver observer: RedrawObservers){
                 observer.redraw();
             }
         }
     }
 
-    public void addRedrawObserver(redrawObserver observer){
-        redrawObservers.add(observer);
+    public void addRedrawObserver(RedrawObserver observer){
+        RedrawObservers.add(observer);
     }
 
     public ArrayList<AnimatedVehicle> getVehicles(){

@@ -1,11 +1,12 @@
 
-public class Controller implements controllerObserver {
+public class Controller implements ControllerObserver {
     // The model of the MVC pattern
     Model model;
 
-    public Controller(Model model) {
+    public Controller(Model model, View view) {
         // Store a reference to the MVC model
         this.model = model;
+        view.addControllerObserver(this);
     }
     // Calls the gas method for all vehicle
     public void gasAll(double amount) {

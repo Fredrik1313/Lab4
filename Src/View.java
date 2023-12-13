@@ -13,11 +13,11 @@ import java.util.ArrayList;
  * each of it is components.
  **/
 
-public class View extends JFrame implements redrawObserver {
+public class View extends JFrame implements RedrawObserver {
     private static final int X = 1000;
     private static final int Y = 900;
 
-    private ArrayList<controllerObserver> controllerObservers;
+    private ArrayList<ControllerObserver> ControllerObservers;
 
     // The model member
     Model model;
@@ -47,13 +47,16 @@ public class View extends JFrame implements redrawObserver {
 
 
     // Constructor
-    public View(String frameName, Model model, Controller controller){
+    public View(String frameName, Model model){
         this.model = model;
         this.controller = controller;
-        controllerObservers = new ArrayList<controllerObserver>();
+        ControllerObservers = new ArrayList<ControllerObserver>();
         drawPanel = new DrawPanel(X, Y-240, model);
         initComponents(frameName);
         model.addRedrawObserver(this);
+    }
+    public void addControllerObserver(ControllerObserver observer){
+        ControllerObservers.add(observer);
     }
 
     // Sets everything in place and fits everything
@@ -130,48 +133,65 @@ public class View extends JFrame implements redrawObserver {
         gasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.gasAll(gasAndBrakeAmount /100.0);
+                for (ControllerObserver observer : ControllerObservers) {
+                    observer.gasAll(gasAndBrakeAmount / 100.0);
+                }
             }
         });
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.brakeAll(gasAndBrakeAmount /100.0);
+                for (ControllerObserver observer : ControllerObservers) {
+                    observer.brakeAll(gasAndBrakeAmount / 100.0);
+                }
             }
         });
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.stopAll();
+                for (ControllerObserver observer : ControllerObservers) {
+                    observer.stopAll();
+                }
             }
         });
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.startAll();
+                for (ControllerObserver observer : ControllerObservers) {
+                    observer.startAll();
+                }
             }
         });
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.turboOffAll();
+                for (ControllerObserver observer : ControllerObservers) {
+                    observer.turboOffAll();
+                }
             }
         });
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.turboOnAll();
+                for (ControllerObserver observer : ControllerObservers) {
+                    observer.turboOnAll();
+                }
             }
         });
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.liftBedAll();
+                for (ControllerObserver observer : ControllerObservers) {
+                    observer.liftBedAll();
+                }
             }
         });
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for (ControllerObserver observer : ControllerObservers) {
+                    observer.lowerBedAll();
+                }
                 controller.lowerBedAll();
             }
         });
@@ -179,14 +199,18 @@ public class View extends JFrame implements redrawObserver {
         addCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.addCar();
+                for (ControllerObserver observer : ControllerObservers) {
+                    observer.addCar();
+                }
             }
         });
 
         removeCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.removeCar();
+                for (ControllerObserver observer : ControllerObservers) {
+                    observer.removeCar();
+                }
             }
         });
 

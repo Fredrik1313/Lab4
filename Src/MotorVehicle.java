@@ -35,12 +35,12 @@ abstract class MotorVehicle implements Movable {
     }
     public void setColor(Color clr){color = clr;}
     public void startEngine(){
+        engineOn = true;
         if (!goingBack){
             currentSpeed = 0.1;
         } else{
             currentSpeed = -0.1;
         }
-        engineOn = true;
     }
     public void setGoingBack(){
         goingBack = !goingBack;

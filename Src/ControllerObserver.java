@@ -1,4 +1,4 @@
-public interface controllerObserver {
+public interface ControllerObserver {
     void gasAll(double amount);
     void brakeAll(double amount);
     void stopAll();
