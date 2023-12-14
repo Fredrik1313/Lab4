@@ -12,6 +12,7 @@ abstract class MotorVehicle implements Movable {
     protected double enginePower; // Engine power of the car
     protected Color color; // Color of the car
     protected String modelName; // The car model name
+    protected static String ImgFileName;
     abstract double speedFactor();
     protected double x; // The car's x-coordinate
     protected double y; // The car's y-coordinate
@@ -32,6 +33,9 @@ abstract class MotorVehicle implements Movable {
     }
     public Point2D.Double getPosition(){
         return new Point2D.Double(x,y);
+    }
+    public static String getImgFileName(){
+        return ImgFileName;
     }
     public void setColor(Color clr){color = clr;}
     public void startEngine(){
@@ -103,15 +107,4 @@ abstract class MotorVehicle implements Movable {
     public void turnRight(){
         direction -= TURNANGLE;
     }
-
-    protected BufferedImage readImage(String fileName){
-        BufferedImage image = null;
-            try {
-                image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/" + fileName)));
-            } catch (IOException ex){
-                ex.printStackTrace();
-            }
-        return image;
-    }
-    abstract BufferedImage getImage();
 }

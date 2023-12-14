@@ -4,17 +4,13 @@ import java.awt.image.BufferedImage;
 
 public class Scania extends Truck{
     private double bedAngle; // The angle of the loading platform
-    private static BufferedImage image = null;
-    private static final String IMGFILENAME = "pics/Scania.jpg";
     public Scania(Point2D.Double position){
         super(position);
         nrDoors = 2;
         color = Color.black;
         enginePower = 90;
         modelName = "Scania";
-        if (image == null){
-            image = readImage(IMGFILENAME);
-        }
+        ImgFileName = "pics/Scania.jpg";
         stopEngine();
     }
     public double getBedAngle(){
@@ -45,9 +41,4 @@ public class Scania extends Truck{
             super.startEngine();
         }
     }
-
-    public BufferedImage getImage(){
-        return image;
-    }
-
 }

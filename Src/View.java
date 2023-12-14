@@ -22,8 +22,6 @@ public class View extends JFrame implements RedrawObserver {
     // The model member
     Model model;
 
-    Controller controller;
-
     //DrawPanel drawPanel = new DrawPanel(X, Y-240, model);
     DrawPanel drawPanel;
 
@@ -49,7 +47,6 @@ public class View extends JFrame implements RedrawObserver {
     // Constructor
     public View(String frameName, Model model){
         this.model = model;
-        this.controller = controller;
         ControllerObservers = new ArrayList<ControllerObserver>();
         drawPanel = new DrawPanel(X, Y-240, model);
         initComponents(frameName);
@@ -192,7 +189,6 @@ public class View extends JFrame implements RedrawObserver {
                 for (ControllerObserver observer : ControllerObservers) {
                     observer.lowerBedAll();
                 }
-                controller.lowerBedAll();
             }
         });
 
